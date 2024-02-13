@@ -17,13 +17,11 @@ public:
             cnt++;
             node=node->next;
         }
-        // cout<<cnt<<endl;
+        
         for(int i=0;i<cnt/2;i++){
             head=head->next;
         }
-        // if(cnt%2==0){
-        //     return head->next;
-        // }
+        
     return head;
     }
 };
