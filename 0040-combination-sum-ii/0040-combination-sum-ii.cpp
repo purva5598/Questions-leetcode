@@ -9,7 +9,7 @@ public:
         }
         for (int j = i; j < candidates.size(); j++) {
             if (j > i && candidates[j] == candidates[j - 1]) continue; // skip duplicates
-            if (candidates[j] > target) break; // no need to continue if the candidate is greater than the target
+            if (candidates[j] > target) break; 
             ds.push_back(candidates[j]);
             f(candidates, j + 1, target - candidates[j], ans, ds); // move to the next index
             ds.pop_back();
