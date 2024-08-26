@@ -1,25 +1,21 @@
 class Solution {
-public:
-    int n;  
-    set<vector<int>> ans;
-    void f(int i, vector<int>& nums){
-        if (i==n){// reach the end of nums
+    void  f(int idx,vector<int> &nums,set<vector<int>> &ans){
+        if(idx==nums.size()){
             ans.insert(nums);
-            return ;
-        } 
-        f(i+1, nums);
-        for (int j=i+1; j<n; j++){
-            if (nums[i]!=nums[j]){
-                swap(nums[i], nums[j]);
-                f(i+1, nums);
-                swap(nums[i], nums[j]);
-            } 
+            return;
         }
-    }    
+       
+        for (int j=idx; j<nums.size(); j++){
+                swap(nums[idx], nums[j]);
+                f(idx+1, nums,ans);
+                swap(nums[idx], nums[j]);
+        }
+    }
+    public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        n=nums.size();
-        sort(nums.begin(), nums.end());
-        f(0, nums);
-        return vector<vector<int>>(ans.begin(), ans.end());
+        set<vector<int>> ans;
+        f(0,nums,ans);
+        
+        return vector<vector<int>> (ans.begin(),ans.end());
     }
 };
